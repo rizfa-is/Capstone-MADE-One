@@ -1,6 +1,7 @@
 package com.issog.capstonemadeone.core.data.source.remote
 
 import com.issog.capstonemadeone.core.data.source.remote.network.ApiResponse
+import com.issog.capstonemadeone.core.data.source.remote.response.BaseApiResponse
 import com.issog.capstonemadeone.core.utils.notNull
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -8,13 +9,13 @@ import okio.IOException
 import retrofit2.Response
 
 abstract class RemoteBaseApiResponse {
-    fun <T> safeApiCall(apiCall: suspend () -> Response<T>): Flow<ApiResponse<T>> {
+    fun <T> safeApiCall(apiCall: suspend () -> Response<BaseApiResponse<T>>): Flow<ApiResponse<List<T>>> {
         return flow {
             emit(ApiResponse.Loading)
             try {
                 val response = apiCall()
                 if (response.isSuccessful && response.body().notNull()) {
-                    emit(ApiResponse.Success(response.body()!!))
+                    emit(ApiResponse.Success(response.body()!!.results))
                 } else {
                     emit(ApiResponse.Error(response.code(), response.message()))
                 }

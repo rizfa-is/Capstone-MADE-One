@@ -1,10 +1,14 @@
 package com.issog.capstonemadeone.core.di
 
 import androidx.room.Room
+import com.issog.capstonemadeone.core.data.MovieRepository
+import com.issog.capstonemadeone.core.data.source.local.LocalDataSource
 import com.issog.capstonemadeone.core.data.source.local.MovieNativeLibs
 import com.issog.capstonemadeone.core.data.source.local.room.MovieDatabase
 import com.issog.capstonemadeone.core.data.source.remote.RemoteDataSource
 import com.issog.capstonemadeone.core.data.source.remote.network.ApiService
+import com.issog.capstonemadeone.core.domain.repository.IMovieRepository
+import com.issog.capstonemadeone.core.utils.AppExecutors
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -51,4 +55,7 @@ val networkModule = module {
 
 val repositoryModule = module {
     single { RemoteDataSource(get()) }
+    single { LocalDataSource(get()) }
+    factory { AppExecutors() }
+    single<IMovieRepository> { MovieRepository(get(), get(), get()) }
 }
