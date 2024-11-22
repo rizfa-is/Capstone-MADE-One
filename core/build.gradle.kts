@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.issog.capstonemadeone.core"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -55,11 +55,11 @@ dependencies {
 
     // fragment
     implementation(libs.androidx.navigation.ui)
-    implementation(libs.androidx.navigation.fragment)
+    api(libs.androidx.navigation.fragment)
 
     // room
     implementation(libs.androidx.room)
-    implementation(libs.androidx.roomcompiler)
+    annotationProcessor(libs.androidx.roomcompiler)
 
     // retrofit
     implementation(libs.retrofit2)
@@ -67,7 +67,7 @@ dependencies {
     implementation(libs.okhttp3.logging)
 
     // koin
-    implementation(libs.koin.core)
+    api(libs.koin.core)
     implementation(libs.koin.android)
 
     testImplementation(libs.junit)

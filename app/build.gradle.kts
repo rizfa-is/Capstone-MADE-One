@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.issog.capstonemadeone"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.issog.capstonemadeone"
@@ -32,6 +32,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+    }
+    buildFeatures {
+        viewBinding = true
     }
 }
 
