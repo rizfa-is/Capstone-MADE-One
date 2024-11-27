@@ -70,6 +70,10 @@ dependencies {
     api(libs.koin.core)
     implementation(libs.koin.android)
 
+    //lifecycle
+    api(libs.lifecycle.viewmodel.ktx)
+    api(libs.lifecycle.livedata.ktx)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
