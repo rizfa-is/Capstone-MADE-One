@@ -9,7 +9,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
-import org.koin.dsl.module
+import org.koin.core.module.Module
 
 abstract class BaseApplication: Application() {
     override fun onCreate() {
@@ -17,14 +17,12 @@ abstract class BaseApplication: Application() {
         startKoin {
             androidLogger(Level.NONE)
             androidContext(this@BaseApplication)
-            modules(
-                databaseModule,
-                networkModule,
-                repositoryModule
+            addModule(
+                this,
+                arrayListOf(databaseModule, networkModule, repositoryModule)
             )
-            addModule(this)
         }
     }
 
-    open fun addModule(koin: KoinApplication) {}
+    open fun addModule(koin: KoinApplication, modules: ArrayList<Module>) {}
 }

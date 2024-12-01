@@ -1,4 +1,4 @@
-package com.issog.capstonemadeone.home
+package com.issog.capstonemadeone.ui.home
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

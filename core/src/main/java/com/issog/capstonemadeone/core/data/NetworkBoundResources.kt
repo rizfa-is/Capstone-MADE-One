@@ -15,7 +15,6 @@ abstract class NetworkBoundResources<ResultType, RequestType> {
         if (shouldFetch(localDataSource)) {
             when(val response = createApiCall().first()) {
                 is ApiResponse.NetworkError -> emit(Resources.NetworkError())
-                is ApiResponse.Loading -> emit(Resources.Loading())
                 is ApiResponse.Error -> {
                     onFetchFailed()
                     emit(Resources.Error(response.code, response.message))

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.issog.capstonemadeone.movie.MovieFragment"
+        android:name="com.issog.capstonemadeone.ui.movie.MovieFragment"
         tools:layout="@layout/fragment_movie"/>
 
     <fragment
         android:id="@+id/tvShowFragment"
-        android:name="com.issog.capstonemadeone.tvshow.TvShowFragment"
+        android:name="com.issog.capstonemadeone.ui.tvshow.TvShowFragment"
         tools:layout="@layout/fragment_movie"/>
 
 </navigation>

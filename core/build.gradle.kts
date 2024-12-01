@@ -52,23 +52,24 @@ dependencies {
     api(libs.material)
     api(libs.androidx.activity)
     api(libs.androidx.constraintlayout)
+    api(libs.glide)
 
     // fragment
-    implementation(libs.androidx.navigation.ui)
+    api(libs.androidx.navigation.ui)
     api(libs.androidx.navigation.fragment)
 
     // room
-    implementation(libs.androidx.room)
-    annotationProcessor(libs.androidx.roomcompiler)
+    api(libs.androidx.room)
+    kapt(libs.androidx.roomcompiler)
 
     // retrofit
-    implementation(libs.retrofit2)
-    implementation(libs.retrofit2.gsonconverter)
-    implementation(libs.okhttp3.logging)
+    api(libs.retrofit2)
+    api(libs.retrofit2.gsonconverter)
+    api(libs.okhttp3.logging)
 
     // koin
     api(libs.koin.core)
-    implementation(libs.koin.android)
+    api(libs.koin.android)
 
     //lifecycle
     api(libs.lifecycle.viewmodel.ktx)

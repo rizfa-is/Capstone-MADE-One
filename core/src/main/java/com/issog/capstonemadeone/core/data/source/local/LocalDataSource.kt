@@ -12,7 +12,7 @@ class LocalDataSource(val movieDao: MovieDao): ILocalDataSource {
     }
 
     override fun getTvShows(): Flow<List<MovieEntity>> {
-        return movieDao.getMovies()
+        return movieDao.getTvShows()
     }
 
     override fun getFavoriteMovies(): Flow<List<MovieEntity>> {

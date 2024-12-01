@@ -11,48 +11,38 @@ object DataMapper {
             Movie(
                 it.id,
                 it.title,
-                it.originalTitle,
-                it.originalName,
                 it.overview,
-                it.releaseDate,
                 it.voteAverage,
-                it.voteCount,
                 it.popularity,
                 it.posterPath,
                 it.favorite,
                 it.isTvShow
             )
-        }
+        }.reversed()
     }
 
     fun List<MovieResponse>.mapMovieResponseToEntities(): List<MovieEntity> {
-        return map {
+        return filter { !it.adult.orDefault() }.map {
             MovieEntity(
-                it.id,
-                it.title,
-                it.overview,
-                it.releaseDate,
-                it.popularity,
-                it.voteAverage,
-                it.voteCount,
-                it.posterPath,
-                it.originalTitle
+                it.id.orDefault(),
+                it.title.orEmpty(),
+                it.overview.orEmpty(),
+                it.popularity.orDefault(),
+                it.voteAverage.orDefault(),
+                it.posterPath.orEmpty()
             )
         }
     }
 
     fun List<TvShowResponse>.mapTvShowResponseToEntities(): List<MovieEntity> {
-        return map {
+        return filter { !it.adult.orDefault() }.map {
             MovieEntity(
-                it.id,
-                it.title,
-                it.overview,
-                it.releaseDate,
-                it.popularity,
-                it.voteAverage,
-                it.voteCount,
-                it.posterPath,
-                it.originalName,
+                it.id.orDefault(),
+                it.name.orEmpty(),
+                it.overview.orEmpty(),
+                it.popularity.orDefault(),
+                it.voteAverage.orDefault(),
+                it.posterPath.orEmpty(),
                 isTvShow = true
             )
         }
@@ -63,13 +53,9 @@ object DataMapper {
             id,
             title,
             overview,
-            releaseDate,
             popularity,
             voteAverage,
-            voteCount,
             posterPath,
-            originalTitle,
-            originalName,
             favorite,
             isTvShows
         )

@@ -1,4 +1,4 @@
-package com.issog.capstonemadeone.movie
+package com.issog.capstonemadeone.ui.movie
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

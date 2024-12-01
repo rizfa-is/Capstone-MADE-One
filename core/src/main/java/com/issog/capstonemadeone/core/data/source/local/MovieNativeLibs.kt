@@ -9,4 +9,5 @@ object MovieNativeLibs {
     external fun movieApiToken(): String
     external fun pathGetMovies(): String
     external fun pathGetTvShows(): String
+    external fun baseUrlImage(): String
 }

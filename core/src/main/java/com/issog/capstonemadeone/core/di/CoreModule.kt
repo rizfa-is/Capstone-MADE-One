@@ -36,11 +36,11 @@ val networkModule = module {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .addInterceptor { chain ->
                 val requestBuilder = chain.request().newBuilder()
-                requestBuilder.header("Authorization", MovieNativeLibs.movieApiToken())
+                requestBuilder.header("Authorization", "Bearer ${MovieNativeLibs.movieApiToken()}")
                 chain.proceed(requestBuilder.build())
             }
-            .connectTimeout(60, TimeUnit.SECONDS)
-            .readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
             .build()
     }
     single {

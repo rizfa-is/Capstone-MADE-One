@@ -14,19 +14,11 @@ data class MovieEntity(
     @ColumnInfo("overview")
     var overview: String,
     @ColumnInfo("release_date")
-    var releaseDate: String,
-    @ColumnInfo("popularity")
     var popularity: Double,
     @ColumnInfo("vote_average")
     var voteAverage: Double,
-    @ColumnInfo("vote_count")
-    var voteCount: Int,
     @ColumnInfo("poster_path")
     var posterPath: String,
-    @ColumnInfo("original_title")
-    var originalTitle: String = "",
-    @ColumnInfo("original_name")
-    var originalName: String = "",
     @ColumnInfo(name = "favorite")
     var favorite: Boolean = false,
     @ColumnInfo(name = "isTvShow")
