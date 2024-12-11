@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.issog.capstonemadeone.R
 import com.issog.capstonemadeone.core.data.Resources
+import com.issog.capstonemadeone.core.utils.NavigationUtils.safeNavigate
 import com.issog.capstonemadeone.databinding.FragmentTvShowBinding
 import com.issog.capstonemadeone.ui.MovieAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,7 +48,7 @@ class TvShowFragment : Fragment() {
 
                 is Resources.Success -> {
                     hideLoading()
-                    tbShowAdapter.setMovieData(it.data)
+                    tbShowAdapter.setTvShowData(it.data)
                 }
 
                 is Resources.Error -> {
@@ -60,7 +63,9 @@ class TvShowFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        tbShowAdapter = MovieAdapter()
+        tbShowAdapter = MovieAdapter {
+            findNavController().safeNavigate(R.id.detailMovieFragment, Bundle().apply { putParcelable("Movie", it) })
+        }
         binding.rvMovie.apply {
             layoutManager = LinearLayoutManager(this.context)
             setHasFixedSize(true)

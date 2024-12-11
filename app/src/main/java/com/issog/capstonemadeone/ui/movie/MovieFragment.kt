@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.issog.capstonemadeone.R
 import com.issog.capstonemadeone.core.data.Resources
+import com.issog.capstonemadeone.core.utils.NavigationUtils.safeNavigate
 import com.issog.capstonemadeone.databinding.FragmentMovieBinding
 import com.issog.capstonemadeone.ui.MovieAdapter
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -64,7 +67,9 @@ class MovieFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter {
+            findNavController().safeNavigate(R.id.detailMovieFragment, Bundle().apply { putParcelable("Movie", it) })
+        }
         binding.rvMovie.apply {
             layoutManager = LinearLayoutManager(this.context)
             setHasFixedSize(true)

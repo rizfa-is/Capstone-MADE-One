@@ -8,11 +8,16 @@
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.issog.capstonemadeone.ui.movie.MovieFragment"
-        tools:layout="@layout/fragment_movie"/>
+        tools:layout="@layout/fragment_movie" />
 
     <fragment
         android:id="@+id/tvShowFragment"
         android:name="com.issog.capstonemadeone.ui.tvshow.TvShowFragment"
-        tools:layout="@layout/fragment_movie"/>
+        tools:layout="@layout/fragment_movie" />
+
+    <fragment
+        android:id="@+id/detailMovieFragment"
+        android:name="com.issog.capstonemadeone.ui.detail.DetailMovieFragment"
+        tools:layout="@layout/fragment_detail_movie" />
 
 </navigation>

@@ -9,7 +9,9 @@ import com.issog.capstonemadeone.core.data.source.local.MovieNativeLibs
 import com.issog.capstonemadeone.core.domain.model.Movie
 import com.issog.capstonemadeone.databinding.ItemMovieBinding
 
-class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    val actionClick: (movie: Movie) -> Unit
+): RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     private val movieList: ArrayList<Movie> by lazy { arrayListOf() }
 
@@ -21,6 +23,7 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                     .into(ivMovie)
                 tvTitle.text = movie.title
                 tvDesc.text = "Rating: ${movie.voteAverage}"
+                root.setOnClickListener { actionClick.invoke(movie) }
             }
         }
     }

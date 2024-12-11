@@ -9,6 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.issog.capstonemadeone.R
 import com.issog.capstonemadeone.core.utils.NavigationUtils.safeNavigate
+import com.issog.capstonemadeone.core.utils.gone
+import com.issog.capstonemadeone.core.utils.visible
 import com.issog.capstonemadeone.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -24,6 +26,24 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupHostFragment() {
         navController = Navigation.findNavController(this, R.id.fragment)
+        addDestinationListener()
+    }
+
+    private fun addDestinationListener() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+           binding.apply {
+               when(destination.id) {
+                   R.id.detailMovieFragment -> {
+                       appBar.gone()
+                       ivBack.visible()
+                   }
+                   else -> {
+                       appBar.visible()
+                       ivBack.gone()
+                   }
+               }
+           }
+        }
     }
 
     private fun setupBottomNavigation() {
@@ -50,6 +70,10 @@ class HomeActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.ivBack.setOnClickListener {
+            navController.popBackStack()
         }
     }
 }

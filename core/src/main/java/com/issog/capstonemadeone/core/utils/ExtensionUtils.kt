@@ -1,5 +1,7 @@
 package com.issog.capstonemadeone.core.utils
 
+import android.view.View
+
 
 fun Int?.orDefault() = this ?: -1
 
@@ -12,3 +14,15 @@ fun Boolean?.orDefault() = this ?: false
 fun <T> T?.notNull() = this != null
 
 fun <T> T?.isNull() = this == null
+
+fun View.visible() {
+    visibility = View.VISIBLE
+}
+
+fun View.invisible() {
+    visibility = View.INVISIBLE
+}
+
+fun View.gone() {
+    visibility = View.GONE
+}
