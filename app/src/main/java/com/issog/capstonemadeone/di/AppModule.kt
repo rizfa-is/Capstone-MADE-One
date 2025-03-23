@@ -2,6 +2,7 @@ package com.issog.capstonemadeone.di
 
 import com.issog.capstonemadeone.core.domain.usecase.MovieAppInteractor
 import com.issog.capstonemadeone.core.domain.usecase.MovieUseCase
+import com.issog.capstonemadeone.ui.detail.DetailMovieViewModel
 import com.issog.capstonemadeone.ui.movie.MovieViewModel
 import com.issog.capstonemadeone.ui.tvshow.TvShowViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -18,4 +19,5 @@ val useCaseModule = module {
 val viewModelModule = module {
     viewModel { MovieViewModel(get()) }
     viewModel { TvShowViewModel(get()) }
+    viewModel { DetailMovieViewModel(get()) }
 }

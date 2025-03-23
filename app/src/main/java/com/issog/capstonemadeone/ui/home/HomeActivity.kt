@@ -35,10 +35,12 @@ class HomeActivity : AppCompatActivity() {
                when(destination.id) {
                    R.id.detailMovieFragment -> {
                        appBar.gone()
+                       bottomNav.gone()
                        ivBack.visible()
                    }
                    else -> {
                        appBar.visible()
+                       bottomNav.visible()
                        ivBack.gone()
                    }
                }
